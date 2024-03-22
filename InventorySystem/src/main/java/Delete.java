@@ -1,4 +1,3 @@
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,10 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MyServlet
+ * Servlet implementation class Delete
  */
-@WebServlet("/MyServlet")
-public class MyServlet extends HttpServlet {
+@WebServlet("/Delete")
+public class Delete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static String url = "jdbc:mysql://ec2-3-85-39-5.compute-1.amazonaws.com:3306/myDB?useSSL=false&allowPublicKeyRetrieval=true";
 	static String user = "onlineuser";
@@ -26,7 +25,7 @@ public class MyServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyServlet() {
+    public Table() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -72,26 +71,16 @@ public class MyServlet extends HttpServlet {
 	    	  ResultSet rs = prepState.executeQuery();
 		
 		    while(rs.next()) {
-		    	response.getWriter().append("Product: "+rs.getString("PRODUCTNAME")+"<br>");
-	    		response.getWriter().append("Product Info: "+rs.getString("PRODUCTINFO")+"<br>");
-	    		response.getWriter().append("Ordered Last: "+rs.getString("LASTORDERED")+"<br>");
-	    		response.getWriter().append("Expiration: "+rs.getString("EXPIRATIONDATE")+"<br>");
-	    		response.getWriter().append("Stock: "+rs.getString("STOCKLEVEL")+"<br>");
-	    		response.getWriter().append("Supplier Details: "+rs.getString("SUPPLIERDETAILS")+"<br>");
-			}
+
+		    	
+		    	
+		    	
+	    		
+		    }
 		} catch (SQLException e) {
 	    	  response.getWriter().println("SQL Exception occured. <br>");
 	    	  e.printStackTrace();
 	      }
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 
 	/**
