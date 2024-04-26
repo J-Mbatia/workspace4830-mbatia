@@ -25,7 +25,7 @@ public class Delete extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Table() {
+    public Delete() {
         super();
         // TODO Auto-generated constructor stub
     }

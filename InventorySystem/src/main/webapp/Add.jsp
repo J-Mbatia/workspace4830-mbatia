@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add varibles for the sql database</title>
+<title>Add</title>
 </head>
 <body>
 

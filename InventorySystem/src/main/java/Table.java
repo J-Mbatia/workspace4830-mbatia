@@ -120,11 +120,22 @@ public class Table extends HttpServlet {
 		String stock = request.getParameter("stock").trim();
 		String supply = request.getParameter("supply").trim();
 		
-		try {
-			System.out.println(PI);
-			String sqlcommand = "INSERT INTO inventory (PRODUCTNAME, PRODUCTINFO, LASTORDERED, EXPIRATIONDATE, STOCKLEVEL, SUPPLIERDETAILS) VALUES ('" + PN + "', '" + PI + "', '" + last + "', '" + exp + "', '" + stock + "', '" + supply + "', now())";
-			PreparedStatement prepState = connection.prepareStatement(sqlcommand);
-			int rs = prepState.executeUpdate();
+		String sqlcommand = "INSERT INTO inventory (PRODUCTNAME, PRODUCTINFO, LASTORDERED, EXPIRATIONDATE, STOCKLEVEL, SUPPLIERDETAILS) VALUES (?, ?, ?, ?, ?, ?)";
+		try (Connection conn = DriverManager.getConnection(
+				"jdbc:mysql://ec2-3-85-39-5.compute-1.amazonaws.com:3306/myDB?useSSL=false&allowPublicKeyRetrieval=true", "onlineuser", "password");
+			PreparedStatement preparedStatement = conn.prepareStatement(sqlcommand)) {
+			
+			preparedStatement.setString(1, PN);
+			preparedStatement.setString(2, PI);
+			preparedStatement.setString(3, last);
+			preparedStatement.setString(4, exp);
+			preparedStatement.setString(5, stock);
+			preparedStatement.setString(6, supply);
+			
+			int row = preparedStatement.executeUpdate();
+			
+			System.out.println(row);
+			
 		} catch (SQLException e) {
 	    	  response.getWriter().println("SQL Exception occured. <br>");
 	    	  e.printStackTrace();

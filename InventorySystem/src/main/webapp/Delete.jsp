@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Delete varibles for the sql database</title>
+<title>Delete</title>
 </head>
 <body>
 
