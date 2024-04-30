@@ -36,7 +36,8 @@ public class Table extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		response.getWriter().append("<title>Inventory</title>");
+		response.getWriter().append("<link rel=\"shortcut icon\" href=\"favicon.ico\"/>");
 		response.setContentType("text/html;charset=UTF-8");
 	      //this gets the driver
 	      try {
@@ -56,7 +57,6 @@ public class Table extends HttpServlet {
 	          e.printStackTrace();
 	          return;
 	       }
-
 		
 		//if connection NOT = null, can be used for sql queries
 	    if (connection != null) {
@@ -71,15 +71,11 @@ public class Table extends HttpServlet {
 	    	  PreparedStatement prepState = connection.prepareStatement(sqlcommand);
 	    	  ResultSet rs = prepState.executeQuery();
 		
-	    	  
-	    	  response.getWriter().append("<title>Inventory</title>");
-	    	  response.getWriter().append("<link rel=\"shortcut icon\" href=\"favicon.ico\"/>");
 	    	  response.getWriter().append("<a href=\"Add.jsp\"><button>ADD</button>");
 		      response.getWriter().append("<a href=\"Delete.jsp\"><button>Delete</button></a><br><br>");
 		    	 
 		    while(rs.next()) {
-		    	
-		    	
+		    		
 		    	response.getWriter().append("Product: "+rs.getString("PRODUCTNAME")+"<br>");
 	    		response.getWriter().append("Product Info: "+rs.getString("PRODUCTINFO")+"<br>");
 	    		response.getWriter().append("Ordered Last: "+rs.getString("LASTORDERED")+"<br>");
@@ -97,7 +93,6 @@ public class Table extends HttpServlet {
 	    	  response.getWriter().println("SQL Exception occured. <br>");
 	    	  e.printStackTrace();
 	      }
-		
 	}
 
 	/**
@@ -109,5 +104,4 @@ public class Table extends HttpServlet {
 		doGet(request, response);
 		
 	}
-
 }

@@ -46,6 +46,9 @@ public class Add extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		response.getWriter().append("<title>Add</title>");
+		response.getWriter().append("<link rel=\"shortcut icon\" href=\"favicon.ico\"/>");
+		
 		String PN = request.getParameter("PN").trim();
 		String PI = request.getParameter("PI").trim();
 		String last = request.getParameter("last").trim();
@@ -78,5 +81,4 @@ public class Add extends HttpServlet {
 		response.sendRedirect("Table");
 		
 	}
-
 }

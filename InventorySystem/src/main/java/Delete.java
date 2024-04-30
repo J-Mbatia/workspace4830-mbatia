@@ -46,6 +46,9 @@ public class Delete extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		response.getWriter().append("<title>Delete</title>");
+		response.getWriter().append("<link rel=\"shortcut icon\" href=\"favicon.ico\"/>");
+		
 		String Del = request.getParameter("Delete").trim();
 		
 		String sqlcommand = "DELETE FROM inventory WHERE PRODUCTNAME= ? ;";

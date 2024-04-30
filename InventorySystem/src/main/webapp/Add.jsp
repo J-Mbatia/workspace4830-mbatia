@@ -27,7 +27,6 @@
 	
 	<input type="submit" value="Submit" id="submitButton">
 </form>
-
 </table>
 
 <br><a href="Table"><button>BACK</button></a>
