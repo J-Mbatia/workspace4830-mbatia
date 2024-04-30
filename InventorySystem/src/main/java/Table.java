@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Table")
 public class Table extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static String url = "jdbc:mysql://ec2-3-85-39-5.compute-1.amazonaws.com:3306/myDB?useSSL=false&allowPublicKeyRetrieval=true";
+	static String url = "jdbc:mysql://ec2-3-86-89-158.compute-1.amazonaws.com:3306/myDB?useSSL=false&allowPublicKeyRetrieval=true";
 	static String user = "onlineuser";
 	static String password = "password";
 	Connection connection = null;
@@ -72,7 +72,8 @@ public class Table extends HttpServlet {
 	    	  ResultSet rs = prepState.executeQuery();
 		
 	    	  
-	    	  
+	    	  response.getWriter().append("<title>Inventory</title>");
+	    	  response.getWriter().append("<link rel=\"shortcut icon\" href=\"favicon.ico\"/>");
 	    	  response.getWriter().append("<a href=\"Add.jsp\"><button>ADD</button>");
 		      response.getWriter().append("<a href=\"Delete.jsp\"><button>Delete</button></a><br><br>");
 		    	 
@@ -97,14 +98,6 @@ public class Table extends HttpServlet {
 	    	  e.printStackTrace();
 	      }
 		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 
 	/**
@@ -112,34 +105,6 @@ public class Table extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		String PN = request.getParameter("PN").trim();
-		String PI = request.getParameter("PI").trim();
-		String last = request.getParameter("last").trim();
-		String exp = request.getParameter("exp").trim();
-		String stock = request.getParameter("stock").trim();
-		String supply = request.getParameter("supply").trim();
-		
-		String sqlcommand = "INSERT INTO inventory (PRODUCTNAME, PRODUCTINFO, LASTORDERED, EXPIRATIONDATE, STOCKLEVEL, SUPPLIERDETAILS) VALUES (?, ?, ?, ?, ?, ?)";
-		try (Connection conn = DriverManager.getConnection(
-				"jdbc:mysql://ec2-3-85-39-5.compute-1.amazonaws.com:3306/myDB?useSSL=false&allowPublicKeyRetrieval=true", "onlineuser", "password");
-			PreparedStatement preparedStatement = conn.prepareStatement(sqlcommand)) {
-			
-			preparedStatement.setString(1, PN);
-			preparedStatement.setString(2, PI);
-			preparedStatement.setString(3, last);
-			preparedStatement.setString(4, exp);
-			preparedStatement.setString(5, stock);
-			preparedStatement.setString(6, supply);
-			
-			int row = preparedStatement.executeUpdate();
-			
-			System.out.println(row);
-			
-		} catch (SQLException e) {
-	    	  response.getWriter().println("SQL Exception occured. <br>");
-	    	  e.printStackTrace();
-	      }
 		
 		doGet(request, response);
 		
